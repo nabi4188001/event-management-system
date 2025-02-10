@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 @RequestMapping("/registrations")
 public class RegistrationController {
@@ -24,9 +25,9 @@ public class RegistrationController {
         return registrationService.register(registration);
     }
 
-    @GetMapping("/{eventName}")
-    public List<Registration> getRegistrationsByEvent(@PathVariable String eventName) {
-        return registrationService.getRegistrationsByEvent(eventName);
+    @GetMapping("/{id}")
+    public Registration getRegistrationById(@PathVariable Long id) {
+        return registrationService.getRegistrationById(id);
     }
 
     @GetMapping
@@ -34,9 +35,9 @@ public class RegistrationController {
         return registrationService.getAllRegistrations();
     }
 
-    @DeleteMapping("/{email}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void cancelRegistration(@PathVariable String email) {
-        registrationService.cancelRegistration(email);
+    public void cancelRegistration(@PathVariable Long id) {
+        registrationService.cancelRegistration(id);
     }
 }

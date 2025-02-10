@@ -3,8 +3,10 @@ package com.example.demo.models;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-
 public class Registration {
+
+    private Long id;
+
     @NotBlank(message = "Name must not be blank")
     private String name;
 
@@ -21,6 +23,14 @@ public class Registration {
         this.name = name;
         this.email = email;
         this.eventName = eventName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
