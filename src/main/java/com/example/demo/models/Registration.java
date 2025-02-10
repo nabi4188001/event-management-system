@@ -3,6 +3,8 @@ package com.example.demo.models;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
+
 public class Registration {
 
     private Long id;

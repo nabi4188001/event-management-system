@@ -1,10 +1,10 @@
-
 package com.example.demo.services;
 
 import com.example.demo.models.Registration;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RegistrationService {
@@ -35,5 +35,15 @@ public class RegistrationService {
 
     public void cancelRegistration(Long id) {
         registrations.removeIf(reg -> reg.getId().equals(id));
+    }
+
+    public void cancelRegistrationByEmail(String email) {
+        registrations.removeIf(reg -> reg.getEmail().equalsIgnoreCase(email));
+    }
+
+    public List<Registration> getRegistrationsByEvent(String eventName) {
+        return registrations.stream()
+                .filter(reg -> reg.getEventName().equalsIgnoreCase(eventName))
+                .collect(Collectors.toList());
     }
 }

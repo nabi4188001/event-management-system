@@ -40,4 +40,15 @@ public class RegistrationController {
     public void cancelRegistration(@PathVariable Long id) {
         registrationService.cancelRegistration(id);
     }
+
+    @DeleteMapping("/email/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void cancelRegistrationByEmail(@PathVariable String email) {
+        registrationService.cancelRegistrationByEmail(email);
+    }
+
+    @GetMapping("/event/{eventName}")
+    public List<Registration> getRegistrationsByEvent(@PathVariable String eventName) {
+        return registrationService.getRegistrationsByEvent(eventName);
+    }
 }
